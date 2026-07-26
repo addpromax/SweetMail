@@ -13,6 +13,7 @@ import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.inventory.Book;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.title.Title;
+import net.kyori.adventure.util.HSVLike;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -171,11 +172,7 @@ public class Util {
         List<Component> bookPages = pages.isEmpty()
                 ? Lists.newArrayList(Component.empty())
                 : Util.toMiniMessage(pages);
-        return Book.builder()
-                .title(Component.text("SweetMail"))
-                .author(Component.text(author))
-                .pages(bookPages)
-                .build();
+        return Book.book(Component.text("SweetMail"), Component.text(author), bookPages);
     }
 
     public static void openBook(Player player, Book book) {
