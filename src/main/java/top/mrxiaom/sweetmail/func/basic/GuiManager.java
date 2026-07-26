@@ -47,22 +47,29 @@ public class GuiManager extends AbstractPluginHolder implements Listener {
         if (player == null) return;
         Inventory inv = gui.newInventory();
         if (inv != null && Util.getHolder(inv) instanceof BaseHolder) {
-            player.openInventory(inv);
+            plugin.getScheduler().openInventory(player, inv);
         } else {
-            player.closeInventory();
+            plugin.getScheduler().closeInventory(player);
             warn("试图为玩家 " + player.getName() + " 打开界面 " + gui.getClass().getName() + " 时，程序返回了 null，或者界面未使用 BaseHolder");
         }
     }
 
     public void onDisable() {
         HandlerList.unregisterAll(this);
+        boolean support = true;
         for (Player player : Bukkit.getOnlinePlayers()) {
             InventoryView view = player.getOpenInventory();
             InventoryHolder holder = Util.getHolder(view.getTopInventory());
             if (holder instanceof BaseHolder) {
                 IGui opened = ((BaseHolder) holder).getGui();
                 opened.onClose(view);
-                player.closeInventory();
+                if (support) {
+                    try {
+                        player.closeInventory();
+                    } catch (Throwable t) {
+                        support = false;
+                    }
+                }
                 Util.sendTitle(player, "§e请等等", "§f管理员正在热更新插件", 10, 30, 10);
             }
         }

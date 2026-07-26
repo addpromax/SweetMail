@@ -319,7 +319,7 @@ public class MenuOutBoxConfig extends AbstractMenuConfig<MenuOutBoxConfig.Gui> {
                         }
                         if (click.equals(ClickType.DROP) && player.hasPermission("sweetmail.admin")) {
                             loading = true;
-                            player.closeInventory();
+                            plugin.getScheduler().closeInventory(player);
                             plugin.getScheduler().runTaskAsync(() -> {
                                 plugin.getMailDatabase().deleteMail(mail.uuid);
                                 String sender = mail.senderDisplay.trim().isEmpty()

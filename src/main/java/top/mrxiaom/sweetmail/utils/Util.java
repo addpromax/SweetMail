@@ -13,7 +13,6 @@ import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.inventory.Book;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.title.Title;
-import net.kyori.adventure.util.HSVLike;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -176,13 +175,13 @@ public class Util {
     }
 
     public static void openBook(Player player, Book book) {
-        player.closeInventory();
+        SweetMail.getInstance().getScheduler().closeInventory(player);
         adventure(player).openBook(book);
     }
 
     @SuppressWarnings({"deprecation", "ConstantValue"})
     public static void openBookLegacy(Player player, Book book) {
-        player.closeInventory();
+        SweetMail.getInstance().getScheduler().closeInventory(player);
         ItemStack bookItem = new ItemStack(Material.WRITTEN_BOOK);
         ItemMeta m = bookItem.getItemMeta();
         if (m instanceof BookMeta) {

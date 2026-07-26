@@ -194,7 +194,7 @@ public class MenuDraftAdvanceConfig extends AbstractMenuConfig<MenuDraftAdvanceC
                 case "系": {
                     if (!click.isShiftClick()) {
                         if (click.isLeftClick()) {
-                            player.closeInventory();
+                            plugin.getScheduler().closeInventory(player);
                             ChatPrompter.prompt(
                                     plugin, player,
                                     iconSenderDisplayPromptTips,
@@ -245,7 +245,7 @@ public class MenuDraftAdvanceConfig extends AbstractMenuConfig<MenuDraftAdvanceC
                                     );
                                 }
                             });
-                            player.closeInventory();
+                            plugin.getScheduler().closeInventory(player);
                             return;
                         }
                         // TODO: 将泛收件人设置移到专门的菜单
@@ -263,7 +263,7 @@ public class MenuDraftAdvanceConfig extends AbstractMenuConfig<MenuDraftAdvanceC
                                     break;
                                 }
                                 case 3: {
-                                    player.closeInventory();
+                                    plugin.getScheduler().closeInventory(player);
                                     Consumer<String> receiver1 = timeStr -> {
                                         Long timestamp = parseTime(timeStr);
                                         if (timestamp == null) {
@@ -282,7 +282,7 @@ public class MenuDraftAdvanceConfig extends AbstractMenuConfig<MenuDraftAdvanceC
                                     return;
                                 }
                                 case 4: {
-                                    player.closeInventory();
+                                    plugin.getScheduler().closeInventory(player);
 
                                     AtomicReference<Consumer<Long>> nextPrompt = new AtomicReference<>();
                                     Consumer<String> receiver1 = timeStr -> {
@@ -319,7 +319,7 @@ public class MenuDraftAdvanceConfig extends AbstractMenuConfig<MenuDraftAdvanceC
                                     break;
                                 }
                                 case 5: {
-                                    player.closeInventory();
+                                    plugin.getScheduler().closeInventory(player);
                                     Consumer<String> receiver1 = str -> {
                                         List<String> names = new ArrayList<>();
                                         String[] split = str.split("[，、；;,]");
@@ -338,7 +338,7 @@ public class MenuDraftAdvanceConfig extends AbstractMenuConfig<MenuDraftAdvanceC
                                     return;
                                 }
                                 case 6:
-                                    player.closeInventory();
+                                    plugin.getScheduler().closeInventory(player);
                                     Consumer<String> receiver1 = str -> {
                                         draft.extensiveReceivers = new PlayerListExpression(false, str);
                                         draft.save();
@@ -361,7 +361,7 @@ public class MenuDraftAdvanceConfig extends AbstractMenuConfig<MenuDraftAdvanceC
                     return;
                 }
                 case "定": {
-                    player.closeInventory();
+                    plugin.getScheduler().closeInventory(player);
 
                     ChatPrompter.prompt(plugin, player,
                             iconTimedPromptTips, iconTimedPromptCancel,
@@ -382,7 +382,7 @@ public class MenuDraftAdvanceConfig extends AbstractMenuConfig<MenuDraftAdvanceC
                 case "过": {
                     if (!click.isShiftClick()) {
                         if (click.isLeftClick()) {
-                            player.closeInventory();
+                            plugin.getScheduler().closeInventory(player);
                             ChatPrompter.prompt(plugin, player,
                                     iconOutdatePromptTips, iconOutdatePromptCancel,
                                     receive -> {

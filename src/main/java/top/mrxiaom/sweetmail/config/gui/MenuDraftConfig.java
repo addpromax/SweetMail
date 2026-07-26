@@ -458,7 +458,7 @@ public class MenuDraftConfig extends AbstractMenuConfig<MenuDraftConfig.Gui> {
             switch (String.valueOf(c)) {
                 case "接": {
                     if (click.isLeftClick() && !click.isShiftClick()) {
-                        player.closeInventory();
+                        plugin.getScheduler().closeInventory(player);
                         ChatPrompter.prompt(
                                 plugin, player,
                                 iconReceiverPromptTips,
@@ -492,7 +492,7 @@ public class MenuDraftConfig extends AbstractMenuConfig<MenuDraftConfig.Gui> {
                 }
                 case "题": {
                     if (click.isLeftClick() && !click.isShiftClick()) {
-                        player.closeInventory();
+                        plugin.getScheduler().closeInventory(player);
                         ChatPrompter.prompt(
                                 plugin, player,
                                 iconTitlePromptTips,
@@ -566,7 +566,7 @@ public class MenuDraftConfig extends AbstractMenuConfig<MenuDraftConfig.Gui> {
                         if (draft.extensiveReceivers != null && draft.extensiveReceivers.isLagTask()) {
                             t(player, plugin.prefix() + Messages.Draft.send_with_adv_receivers.str());
                         }
-                        player.closeInventory();
+                        plugin.getScheduler().closeInventory(player);
                         plugin.getScheduler().runTaskAsync(() -> {
                             List<String> receivers = DraftManager.inst().generateReceivers(draft);
                             if (!canSendToYourself) receivers.remove(player.getName());

@@ -114,7 +114,7 @@ public class MenuAddAttachmentConfig extends AbstractMenuConfig<MenuAddAttachmen
                         if (gui != null) {
                             gui.open();
                         } else {
-                            player.closeInventory();
+                            plugin.getScheduler().closeInventory(player);
                         }
                     }
                     break;

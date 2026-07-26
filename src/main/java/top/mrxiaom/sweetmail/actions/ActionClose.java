@@ -2,6 +2,7 @@ package top.mrxiaom.sweetmail.actions;
 
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
+import top.mrxiaom.sweetmail.SweetMail;
 import top.mrxiaom.sweetmail.utils.Pair;
 
 import java.util.List;
@@ -18,6 +19,6 @@ public class ActionClose implements IAction {
 
     @Override
     public void run(Player player, @Nullable List<Pair<String, Object>> replacements) {
-        player.closeInventory();
+        SweetMail.getInstance().getScheduler().closeInventory(player);
     }
 }

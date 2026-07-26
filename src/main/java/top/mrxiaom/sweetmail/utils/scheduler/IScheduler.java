@@ -2,7 +2,9 @@ package top.mrxiaom.sweetmail.utils.scheduler;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,6 +29,8 @@ public interface IScheduler {
     @NotNull IRunTask runAtLocationTimer(@NotNull Location location, @NotNull Consumer<Location> runnable, long delay, long period);
     void teleport(@NotNull Entity entity, @NotNull Location location, @NotNull PlayerTeleportEvent.TeleportCause cause, @Nullable Consumer<Entity> then);
     void teleport(@NotNull Entity entity, @NotNull Location location, @Nullable Consumer<Entity> then);
+    void openInventory(HumanEntity entity, Inventory inventory);
+    void closeInventory(HumanEntity entity);
     default @NotNull IRunTask runTaskAsynchronously(@NotNull Runnable runnable) {
         return runTaskAsync(runnable);
     }
