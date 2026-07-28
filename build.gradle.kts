@@ -88,7 +88,9 @@ dependencies {
 
     base.library("org.slf4j:slf4j-api:2.0.16")
     base.library(base.depend.HikariCP)
-    base.library(LibraryHelper.adventure("4.25.0"))
+    base.library(LibraryHelper.adventure("4.25.0", listOf(
+        "api", "text-minimessage", "text-serializer-gson", "text-serializer-legacy"
+    )))
 
     // Shadow Dependency
     implementation(base.depend.nbtapi)
